@@ -432,7 +432,7 @@ if ~strcmpi(weed_zero_elevation,'n')
     ix=ix(nzix);
     n_ps=size(ph,1);
 end
-save('hgt2','hgt')
+stamps_save('hgt2','hgt')
 
 
 
@@ -444,8 +444,8 @@ if single_master_flag~=0
 else
     ph_rc=ph;
 end
-save('rc2','ph_rc');
-save('pm2','coh_ps')
+stamps_save('rc2','ph_rc');
+stamps_save('pm2','coh_ps')
 
 
 
@@ -508,4 +508,4 @@ setparm('weed_zero_elevation',weed_zero_elevation)
 
 
 % constructing ps2.mat
-save('ps2','ij','lonlat','xy','day','ifgday','ifgday_ix','bperp','master_day','master_ix','n_ifg','n_image','n_ps','ll0','master_ix');
+stamps_save('ps2','ij','lonlat','xy','day','ifgday','ifgday_ix','bperp','master_day','master_ix','n_ifg','n_image','n_ps','ll0','master_ix');
