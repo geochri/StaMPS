@@ -106,7 +106,7 @@ if ~exist(looksname,'file')
 else
     looks=load(looksname);
 end
-cohname=['coh_',num2str(looks),'l'];
+cohname=['isce_minrefdem_filt_',num2str(looks),'l','.coh'];
 n_lrg=floor(n_rg/looks);
 if ~exist(laname,'file')
     laname = ['.',laname];
@@ -120,17 +120,17 @@ else
     ar=load(arname);
 end
 n_laz=floor(n_az/looks/ar);
-
+ 
 % allow a processing list of ifgs folders to be specified
 if flag_all_ifgs==1
-    dirs=ls(['2*/',cohname,'.raw']);
+    dirs=ls(['*',filesep,cohname]);
     dirs=strread(dirs,'%s');
     n_d=length(dirs); 
 else
     dirs = textread(list,'%s');
     n_d = length(dirs); 
     for k=1:n_d
-       dirs{k} = [dirs{k} filesep cohname,'.raw'];
+         dirs{k} = [dirs{k},filesep,cohname];
     end
 end
     
@@ -408,6 +408,7 @@ for i=1:n_d
            error([filename,' does not appear to exist'])
         end
         fprintf('   reading %s...\n',filename)
+        coh = single(load_isce(incname));
         coh=fread(fid,[n_lrg,inf],'float=>single');
         fclose(fid);
 
@@ -475,7 +476,7 @@ for i=setdiff([1:n_image],master_ix);
     bperp_mat(:,i)=bp0_ps;
 end
 bperp_mat=bperp_mat(:,ifgday_ix(:,2))-bperp_mat(:,ifgday_ix(:,1));
-save('bp2','bperp_mat')
+stamps_save('bp2','bperp_mat')
 
 % constructing vector of Bperp for ps2.mat
 bperp=mean(bperp_mat)';
