@@ -93,7 +93,7 @@ G=[ones(size(day)),day-master_day] ; % [ 1  a ] --> b + ax
 
 offset=pi*1000*lambda/(4*pi);
 
-ts=nanmean(ts,1);
+ts=mean(ts,1);
 x_hat=G\double(ts');
 ts_hat=G*x_hat;
 %tsup_hat=ts_hat+offset;
