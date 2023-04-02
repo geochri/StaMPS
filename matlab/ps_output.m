@@ -124,7 +124,7 @@ end
 %%and dem_error is relative to mean of zero height points (if there are any)
 fid=fopen('ps_data.xy','w');
 fprintf(fid,'%f %f %4.4f %4.4f %4.4f\n',[mean_v,double(hgt.hgt),dem_error]');
-fclose(fid)
+fclose(fid);
 
 for i=1:n_image
     ph=ph_uw(:,i);
