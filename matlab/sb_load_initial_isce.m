@@ -36,6 +36,7 @@ calname=['calamp.out'];             % amplitide calibrations
 widthname=['width.txt'];            % width of interferograms
 lenname=['len.txt'];                % length of interferograms
 
+incname=['inc_angle.raw'];
 psver=1;
 savename=['ps',num2str(psver)];
 incsavename=['inc',num2str(psver)];
