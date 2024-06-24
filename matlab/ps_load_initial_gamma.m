@@ -68,10 +68,10 @@ master_day=datenum(year,month,monthday);
 
 master_ix=sum(day<master_day)+1;
 if day(master_ix)~=master_day
-    master_master_flag='0' % no null master-master ifg provided
+    master_master_flag='0'; % no null master-master ifg provided
     day=[day(1:master_ix-1);master_day;day(master_ix:end)];
 else
-    master_master_flag='1' % yes, null master-master ifg provided
+    master_master_flag='1'; % yes, null master-master ifg provided
 end
 
 heading=readparm(rslcpar,'heading:');

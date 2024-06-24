@@ -22,8 +22,6 @@ if ischar(aps_flag)
    if strcmp(aps_flag,'a_linear')==1 || strcmp(aps_flag,'a_l')==1
        % aps topo correlated linear correction
        aps_flag=1;
-       
-       keyboard
    elseif strcmp(aps_flag,'a_powerlaw')==1 || strcmp(aps_flag,'a_p')==1
        % aps topo correlated powerlaw correction
        aps_flag=2;

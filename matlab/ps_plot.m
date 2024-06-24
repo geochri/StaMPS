@@ -1576,7 +1576,7 @@ switch(group_type)
         day=day(unwrap_ifg_index,:);
         
         %ph_uw=ph_uw-repmat(mean(ph_uw(ref_ps,:),1),n_ps,1);
-        ph_uw=ph_uw-repmat(nanmean(ph_uw(ref_ps,:),1),n_ps,1);
+        ph_uw=ph_uw-repmat(mean(ph_uw(ref_ps,:),1),n_ps,1);
         % Each ifg has master APS - slave APS, including master 
         % (where slave APS = master APS) so OK to include master in inversion
         if strcmpi(small_baseline_flag,'y')

@@ -1,6 +1,8 @@
+function [] = ts_plot_select(lat0, lon0, radiusfactor)
 % ts_plot for PS_PLOT function
 %
-%
+%   Edited by Bryan Marfito 
+%   05/2022 BM: specify latlon points for TS plots rather than clicking on them
 %
 %   Andy Hooper, June 2006
 %
@@ -13,17 +15,17 @@
 % Place button for new TS plots
 % see ps_plot
 
-mEditBox=findobj('Background',[1 1 1]); % get the handle of editable textbox
+%mEditBox=findobj('Background',[1 1 1]); % get the handle of editable textbox
 %radiusfactor=str2num(get(mEditBox,'String')) % get radius factor from editbox
-radiusfactor = str2num(char(get(mEditBox,'String')));					% added by david this is also not a single value but a vector
-radiusfactor = radiusfactor(1);								% select only the first value, i checked it for a couple of values and radius is correct
+%radiusfactor = str2num(char(get(mEditBox,'String')));					% added by david this is also not a single value but a vector
+%radiusfactor = radiusfactor(1);								% select only the first value, i checked it for a couple of values and radius is correct
 
 %if radiusfactor > 3600
 %    disp('radius factor should be <= 3600')
 %    return
 %end
 
-momfig_name=['(', get(gcf,'name'), ')']; % inherent fig_name from the velocity plot
+%momfig_name=['(', get(gcf,'name'), ')']; % inherent fig_name from the velocity plot
 
 % LOAD TS mat file ~ ps_plot_ts_v-d.mat
 if ~exist('ph_mm','var')
@@ -39,9 +41,9 @@ end
 %  
 % GET USER INPUT from MOUSE CLICK
 %
- disp('Please select a point on the figure to plot time series (TS)')
- [lon0,lat0] = ginput(1); % turn on when final
- disp(['Selected point coordinates (lon,lat):' num2str(lon0),', ', num2str(lat0) ])
+ %disp('Please select a point on the figure to plot time series (TS)')
+ %[lon0,lat0] = ginput(1); % turn on when final
+ %disp(['Selected point coordinates (lon,lat):' num2str(lon0),', ', num2str(lat0) ])
 
 % MAKE A CIRCLE AROUND SELECTED POINT (lon0,lat0)
 t = linspace(0,2*pi,114); % 114 pts
@@ -65,7 +67,7 @@ end
 % PLOT selection and points
 figure
     set(gcf,'name',['Found #pt(s): ', num2str(n_pts_near),...
-        '  in radius: ', num2str(r), ' m. ', momfig_name ])
+        '  in radius: ', num2str(r), ' m. '])
     circlell=local2llh([x;y]/1000,[lon0,lat0]);
     plot(circlell(1,:),circlell(2,:));
     hold on
@@ -128,7 +130,7 @@ ts_hat=G*x_hat;
    % TS
 %    subplot(10,10,[11 87]) % subplot(10,1,2:9)
        set(gcf,'name',[ ' Times series plot for #point(s): ',...
-        num2str(n_pts_near), ' ', momfig_name])
+        num2str(n_pts_near), ' ',])
     %h1=plot(day,ts,'--*'); hold on
     %plot(day,ts_hat,'-k','LineSmoothing','on'); % mess up ticks
     plot(day,ts_hat,'-r'); % mess up ticks
